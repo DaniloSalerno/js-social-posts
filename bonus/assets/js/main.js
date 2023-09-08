@@ -71,7 +71,7 @@ posts.forEach(element => {
 
       const markup = `
       
-      <div class="post">
+      <div class="post card">
             <div class="post__header position-relative">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
