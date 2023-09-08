@@ -93,7 +93,7 @@ posts.forEach(element => {
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="${image}" alt="${name}">                    
+                    <img class="profile-pic" src="${image}" alt="${image === null ? name[0] : name}">                    
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${name}</div>
@@ -124,6 +124,29 @@ posts.forEach(element => {
         
     })
 
+
+const likeBtn = document.querySelectorAll('.like-button');
+const likeNumber = document.querySelectorAll('.js-likes-counter')
+
+
+likeBtn.forEach((element,i) => {
+    let likeStatus = false;
+    element.addEventListener('click', function like(e) {
+
+    e.preventDefault();
+    
+    if (likeStatus) {
+        likeStatus = false;
+        likeNumber[i].textContent = Number(likeNumber[i].textContent) - 1;
+        this.style.color = '#404040'
+    } else {
+        likeNumber[i].textContent = Number(likeNumber[i].textContent) + 1;
+        likeStatus = true
+        this.style.color = 'blue'
+    }
+
+})
+})
 
 
 
