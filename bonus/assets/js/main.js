@@ -94,12 +94,12 @@ posts.forEach(element => {
             
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button js-like-button w-100 justify-content-between" href="#" data-postid="${id}">
+                    <div class="like-button js-like-button w-100 justify-content-between" data-postid="${id}">
                         <i class="like-button__icon fa-solid fa-heart fs-3 me-5" aria-hidden="true"></i>
                         <i class="fa-regular fa-comment fs-3 me-5"></i>
                         <i class="fa-regular fa-paper-plane fs-3 me-5"></i>
                         <i class="fa-regular fa-bookmark fs-3 me-5"></i>
-                    </a>
+                    </div>
                 </div>
                 <div class="likes__counter">
                     Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone
@@ -117,10 +117,11 @@ posts.forEach(element => {
 
 
 const likeBtn = document.querySelectorAll('.like-button');
-const likeNumber = document.querySelectorAll('.js-likes-counter')
+const likeNumber = document.querySelectorAll('.js-likes-counter');
+const heartBtn = document.querySelectorAll('.like-button__icon')
 
 
-likeBtn.forEach((element,i) => {
+heartBtn.forEach((element,i) => {
   let likeStatus = false;
   element.addEventListener('click', function like(e) {
 
@@ -129,11 +130,11 @@ likeBtn.forEach((element,i) => {
   if (likeStatus) {
       likeStatus = false;
       likeNumber[i].textContent = Number(likeNumber[i].textContent) - 1;
-      this.style.color = '#404040'
+      heartBtn[i].style.color = '#404040'
   } else {
       likeNumber[i].textContent = Number(likeNumber[i].textContent) + 1;
       likeStatus = true
-      this.style.color = 'red'
+      heartBtn[i].style.color = 'red'
   }
 
 })
