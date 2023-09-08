@@ -89,6 +89,12 @@ posts.forEach(element => {
 
         const { id, content, media, likes, created, author: { name, image } } = element
 
+        const day = new Date(created).getDate();
+        const month = new Date(created).getMonth();
+        const year = new Date(created).getFullYear();
+
+        const italianDate = `${day}-${month}-${year}`
+
         const markup = `<div class="post">
         <div class="post__header">
             <div class="post-meta">                    
@@ -97,7 +103,7 @@ posts.forEach(element => {
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${name}</div>
-                    <div class="post-meta__time">${created}</div>
+                    <div class="post-meta__time">${italianDate}</div>
                 </div>                    
             </div>
         </div>
