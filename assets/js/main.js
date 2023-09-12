@@ -56,6 +56,8 @@ const posts = [
     }
 ];
 
+const likedPosts = [];
+
 const postDomEl = document.querySelector('.posts-list');
 
 posts.forEach(element => {
@@ -117,15 +119,24 @@ likeBtn.forEach((element,i) => {
     if (likeStatus) {
         likeStatus = false;
         likeNumber[i].textContent = Number(likeNumber[i].textContent) - 1;
-        this.style.color = '#404040'
+        this.style.color = '#404040';
+
+        let deletePost = likedPosts.indexOf(parseInt(this.dataset.postid))
+
+        likedPosts.splice(deletePost,1)
+
+
     } else {
         likeNumber[i].textContent = Number(likeNumber[i].textContent) + 1;
         likeStatus = true
         this.style.color = 'blue'
+        
+        likedPosts.push(parseInt(this.dataset.postid));
+
     }
 
+    console.log(likedPosts);
 })
 })
-
 
 
